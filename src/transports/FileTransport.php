@@ -21,12 +21,12 @@ class FileTransport {
 
     public function send(Event $event)
     {
-        $fileName = $this->filePath.DIRECTORY_SEPARATOR.time().'_'.$event->name.'_'.$this->stream_id.'_'.$this->webmaster_id.'_'.rand(0,10000).'.csv';
+        $fileName = $this->filePath.DIRECTORY_SEPARATOR.time().'_'.$event->name.'_'.rand(0,10000).'.csv';
         if(!is_writable($fileName)){
             return false;
         }
         while(!$fHandle = fopen($fileName,'x')){
-            $fileName = $this->filePath.DIRECTORY_SEPARATOR.time().'_'.$this->offer_id.'_'.$this->stream_id.'_'.$this->webmaster_id.'_'.rand(0,10000).'.csv';
+            $fileName = $this->filePath.DIRECTORY_SEPARATOR.time().'_'.$event->name.'_'.rand(0,10000).'.csv';
         }
         fputcsv($fHandle,$event->data);
         fclose($fHandle);
