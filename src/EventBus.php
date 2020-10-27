@@ -1,5 +1,5 @@
 <?php
-
+namespace lliytnik\eventbus;
 
 class EventBus
 {
