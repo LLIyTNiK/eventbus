@@ -1,5 +1,5 @@
 <?php
-namespace lliytnik\eventbus\transport;
+namespace lliytnik\eventbus\transports;
 
 abstract class Transport
 {
