@@ -1,7 +1,7 @@
 <?php
 namespace lliytnik\eventbus\events;
 
-abstract class Event
+class Event
 {
     public $name;
     public $class;
