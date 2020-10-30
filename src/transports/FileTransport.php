@@ -3,7 +3,7 @@ namespace lliytnik\eventbus\transports;
 
 use lliytnik\eventbus\events\Event;
 
-class FileTransport {
+class FileTransport extends Transport {
     private $filePath;
 
     public function __construct(string $filepath)
@@ -21,6 +21,7 @@ class FileTransport {
 
     public function send(Event $event)
     {
+
         $fileName = $this->filePath.DIRECTORY_SEPARATOR.time().'_'.$event->name.'_'.rand(0,10000).'.csv';
         if(!is_writable($fileName)){
             return false;
@@ -28,12 +29,22 @@ class FileTransport {
         while(!$fHandle = fopen($fileName,'x')){
             $fileName = $this->filePath.DIRECTORY_SEPARATOR.time().'_'.$event->name.'_'.rand(0,10000).'.csv';
         }
-        fputcsv($fHandle,$event->data);
+        fputcsv($fHandle,$this->encodeEvent($event));
         fclose($fHandle);
     }
 
     public function consume()
     {
 
+    }
+
+    function encodeEvent(Event $event)
+    {
+        return json_encode($event);
+    }
+
+    function decodeEvent(Event $event)
+    {
+        return json_decode($event);
     }
 }

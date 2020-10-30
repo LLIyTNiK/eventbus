@@ -3,7 +3,6 @@
 
 namespace lliytnik\eventbus\events;
 
-
 class LeadEvent extends Event
 {
     public function __construct(array $params)
@@ -12,7 +11,4 @@ class LeadEvent extends Event
         $this->name = 'leadEvent';
         $this->class = '\common\models\Lead';
     }
-
-
-
 }
