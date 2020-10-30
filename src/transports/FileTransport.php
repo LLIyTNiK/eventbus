@@ -21,16 +21,17 @@ class FileTransport extends Transport {
 
     public function send(Event $event)
     {
-
-        $fileName = $this->filePath.DIRECTORY_SEPARATOR.time().'_'.$event->name.'_'.rand(0,10000).'.csv';
-        if(!is_writable($fileName)){
+        $path = $this->filePath.DIRECTORY_SEPARATOR;
+        $fileName = time().'_'.$event->name.'_'.rand(0,10000).'.csv';
+        if(!is_writable($path)){
             return false;
         }
         while(!$fHandle = fopen($fileName,'x')){
             $fileName = $this->filePath.DIRECTORY_SEPARATOR.time().'_'.$event->name.'_'.rand(0,10000).'.csv';
         }
-        fputcsv($fHandle,$this->encodeEvent($event));
+        fputs($fHandle,$this->encodeEvent($event));
         fclose($fHandle);
+        return true;
     }
 
     public function consume()
