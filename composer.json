@@ -3,7 +3,7 @@
   "description": "package for using message event system for project",
   "type": "extension",
   "license": "BSD-3-Clause",
-  "version" : "1.0",
+  "version" : "1.0.0",
   "authors": [
     {
       "name": "Fynjy",
