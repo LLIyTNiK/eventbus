@@ -3,6 +3,7 @@
   "description": "package for using message event system for project",
   "type": "extension",
   "license": "BSD-3-Clause",
+  "version" : "1.0",
   "authors": [
     {
       "name": "Fynjy",
@@ -12,7 +13,6 @@
   "minimum-stability": "dev",
   "require": {
     "php": ">=7.2.0",
-    "ext-rdkafka" : "*"
   },
   "autoload": {
     "psr-4": {
