@@ -8,5 +8,8 @@ abstract class Transport
     abstract function consume();
 
     abstract function encodeEvent(Event $event);
-    abstract function decodeEvent(Event $event);
+    abstract function decodeEvent(string $event);
+
+    abstract function getConsumer();
+    abstract function getProducer();
 }
